@@ -1,0 +1,139 @@
+int x=400;
+int y=300;
+int ballx=0;
+int bally=0;
+int ball2x=800;
+int ball2y=0;
+int ball3x=0;
+int ball3y=600;
+int ball4x=800;
+int ball4y=600;
+int punts=0;
+void setup(){
+  size(800,600);
+}
+
+void draw(){
+  background(0);
+  fill(255);
+  rect(x,y,40,40);
+  ellipse(ballx,bally,20,20);
+  ballx=ballx+7;
+  bally=bally+6;
+  ellipse(ball2x,ball2y,20,20); 
+  ball2x=ball2x-7;
+  ball2y=ball2y+6;
+  ellipse(ball3x,ball3y,20,20); 
+  ball3x=ball3x+7;
+  ball3y=ball3y-6;
+  ellipse(ball4x,ball4y,20,20); 
+  ball4x=ball4x-7;
+  ball4y=ball4y-6;
+
+String score = "Score:"+punts;
+textSize(20);
+fill(250);
+text(score,675,50);
+
+if(ballx>800 && bally>600){
+  punts=punts+1;
+}
+
+if(ball2x<0 && ball2y>600){
+  punts=punts+1;
+}
+
+if(ball3x<800 && ball3y<0){
+  punts=punts+1;
+}
+
+if(ball4x<0 && ball4y<0){
+  punts=punts+1;
+}
+
+   
+   if (ballx>800 && bally>600){
+     ballx=0;
+     bally=0;
+   }
+   
+   if(ball2x<0 && ball2y>600){
+     ball2x=800;
+     ball2y=0;
+   }
+   
+   if(ball3x<800 && ball3y<0){
+     ball3x=0;
+     ball3y=600;
+   }
+   
+   if(ball4x<0 && ball4y<0){
+     ball4x=800;
+     ball4y=600;
+   }
+   
+   
+   if(x>760){
+     x=760;
+   }
+   if(x<0){
+     x=0;
+   }
+   if(y>560){
+     y=560;
+   }
+   if(y<0){
+     y=0;
+   }
+   
+  
+  if (ballx>x && ballx<x+40 && bally>y && bally<y+40){    
+    textSize(20);
+    fill(250,0,0);
+     String gameover = "Game Over";
+     text(gameover,350,100); 
+     ballx=x;
+     bally=y;
+  }
+   if (ball2x>x && ball2x<x+40 && ball2y>y && ball2y<y+40){    
+    textSize(20);
+    fill(250,0,0);
+     String gameover = "Game Over";
+     text(gameover,350,100); 
+     ball2x=x+40;
+     ball2y=y;
+  }
+   if (ball3x>x && ball3x<x+40 && ball3y>y && ball3y<y+40){    
+    textSize(20);
+    fill(250,0,0);
+     String gameover = "Game Over";
+     text(gameover,350,100); 
+     ball3x=x;
+     ball3y=y+40;
+  }
+   if (ball4x>x && ball4x<x+40 && ball4y>y && ball4y<y+40){    
+    textSize(20);
+    fill(250,0,0);
+     String gameover = "Game Over";
+     text(gameover,350,100); 
+     ball4x=x+40;
+     ball4y=y+40;
+  }
+}
+
+void keyPressed(){
+  if (key == CODED) {
+    if (keyCode == RIGHT) {
+      x=x+30;
+    } else if (keyCode == LEFT) {
+      x=x-30;
+    }
+   }
+    if (key == CODED) {
+  if (keyCode == UP) {
+      y=y-30;
+    } else if (keyCode == DOWN) {
+      y=y+30;
+    }
+    }
+}
